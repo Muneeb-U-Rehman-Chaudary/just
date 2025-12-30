@@ -211,7 +211,7 @@ export default function Home() {
           ) : vendors.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {vendors.map((vendor: any) => (
-                <Card key={vendor._id} className="group border border-border/50 shadow-none hover:border-primary/40 transition-all duration-500 rounded-[2rem] bg-muted/30 hover:bg-background">
+                <Card key={vendor.id} className="group border border-border/50 shadow-none hover:border-primary/40 transition-all duration-500 rounded-[2rem] bg-muted/30 hover:bg-background">
                   <CardContent className="p-8">
                     <div className="space-y-6">
                       <div className="flex items-center gap-5">
@@ -246,7 +246,7 @@ export default function Home() {
                       </div>
 
                       <Button variant="outline" className="w-full h-11 rounded-xl font-semibold border-border/50 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300 shadow-none" asChild>
-                        <Link href={`/vendors/${vendor._id}`}>
+                        <Link href={`/vendors/${vendor.id}`}>
                           Explore Store
                         </Link>
                       </Button>
