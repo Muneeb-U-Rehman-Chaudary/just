@@ -50,7 +50,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { useAdminUsers, useDeleteUser, useBanUser, useUnbanUser, useMessageUser } from "@/hooks/useApi";
+import { useAdminUsers, useDeleteUser, useBanUser, useUnbanUser, useSendMessageToUser } from "@/hooks/useApi";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 
