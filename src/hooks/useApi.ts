@@ -826,7 +826,7 @@ export function useReplyToContact() {
   });
 }
 
-export function useMessageUser() {
+export function useSendMessageToUser() {
   return useMutation({
     mutationFn: ({ userId, subject, content }: { userId: string | number; subject: string; content: string }) =>
       fetchWithAuth(`/api/admin/users/${userId}/message`, {
