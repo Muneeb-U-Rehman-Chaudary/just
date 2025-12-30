@@ -12,13 +12,13 @@ export async function GET(request: NextRequest) {
     const featured = searchParams.get('featured') === 'true';
     
     // Get vendors with at least one approved product
-    const vendors = await User.find({ 
-      role: 'vendor'
-    })
-      .select('_id name email storeName storeDescription rating totalSales totalEarnings image')
-      .limit(limit)
-      .sort({ totalSales: -1 })
-      .lean();
+      const vendors = await User.find({ 
+        role: 'vendor'
+      })
+        .select('_id name email storeName storeDescription rating totalSales totalEarnings image sponsored')
+        .limit(limit)
+        .sort({ totalSales: -1 })
+        .lean();
     
     // Get product counts and featured products for each vendor
     const vendorsWithDetails = await Promise.all(
