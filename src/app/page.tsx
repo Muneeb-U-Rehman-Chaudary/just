@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
@@ -9,21 +9,29 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { TrendingUp, Award, Users, Package, ArrowRight, Star, ShoppingBag, Sparkles, Zap, Globe, Shield } from "lucide-react";
+import { TrendingUp, Award, Users, Package, ArrowRight, Star, Sparkles, Zap, Globe, Shield } from "lucide-react";
 import Link from "next/link";
 import { useProducts, useVendors } from "@/hooks/useApi";
 
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
   const [category, setCategory] = useState<string>("all");
   const [sortBy, setSortBy] = useState<string>("createdAt");
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const { data: productsData, isLoading: loading } = useProducts({
     category: category !== "all" ? category : undefined,
     sortBy,
     limit: 12,
-  });
+    enabled: mounted,
+  } as any);
 
-  const { data: vendorsData, isLoading: vendorsLoading } = useVendors();
+  const { data: vendorsData, isLoading: vendorsLoading } = useVendors({
+    enabled: mounted,
+  } as any);
 
   const allProducts = productsData?.products || [];
   const sponsoredProducts = allProducts.filter((p: any) => p.sponsored);
@@ -43,6 +51,24 @@ export default function Home() {
     { value: "ui-kit", label: "UI Kits" },
     { value: "design", label: "Designs" }
   ];
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <section className="relative overflow-hidden min-h-[70vh] flex items-center bg-muted/30">
+          <div className="container mx-auto px-4 py-16 text-center">
+            <Skeleton className="h-20 w-3/4 mx-auto mb-8 rounded-2xl" />
+            <Skeleton className="h-8 w-1/2 mx-auto mb-12 rounded-xl" />
+            <div className="flex gap-4 justify-center">
+              <Skeleton className="h-14 w-48 rounded-xl" />
+              <Skeleton className="h-14 w-48 rounded-xl" />
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">
