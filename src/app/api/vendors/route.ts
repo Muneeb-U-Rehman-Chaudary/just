@@ -45,9 +45,10 @@ export async function GET(request: NextRequest) {
           storeDescription: vendor.storeDescription || 'Quality digital products',
           rating: vendor.rating || 0,
           totalSales: vendor.totalSales || 0,
-          totalEarnings: vendor.totalEarnings || 0,
-          image: vendor.image,
-          productCount,
+            totalEarnings: vendor.totalEarnings || 0,
+            image: vendor.image,
+            sponsored: vendor.sponsored || false,
+            productCount,
           featuredProducts: featuredProducts.map(p => ({
             id: p.productId,
             title: p.title,
