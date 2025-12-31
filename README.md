@@ -37,13 +37,7 @@ DigiVerse is a high-end, full-featured digital marketplace designed for creators
 - [Bun](https://bun.sh/) or [Node.js](https://nodejs.org/)
 - PostgreSQL database instance
 
-### Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Muneeb-U-Rehman-Chaudary/just.git
-   cd just
-   ```
+##
 
 2. **Install dependencies:**
    ```bash
@@ -70,7 +64,3 @@ DigiVerse is a high-end, full-featured digital marketplace designed for creators
 - **Vendor Discovery**: Improved vendor showcase with "Elite Contributor" badges and detailed store stats.
 - **Dynamic Filtering**: Real-time product sorting and category filtering for better asset discovery.
 - **Performance**: Fully optimized for speed using Next.js 15 Turbopack.
-
----
-
-Built with precision by **Orchids AI** 🚀
